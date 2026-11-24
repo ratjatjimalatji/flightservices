@@ -8,6 +8,6 @@ chkconfig mysqld on
 
 service mysqld start
 
-mysqladmin -u root password test1234
+mysqladmin -u root password <your-db-password>
 
 mysql -uroot -p

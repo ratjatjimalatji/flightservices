@@ -1,20 +1,38 @@
 package com.bharath.flightreservation.entities;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-public class Flight extends AbstractEntity{
-	
-	private String flightNumber;
-	private String operatingAirlines;
-	private String departureCity;
-	private String arrivalCity;
-	private Date dateOfDeparture;
-	private Timestamp estimatedDepartureTime;
+public class Flight extends AbstractEntity {
 
+	@NotBlank
+	@Size(max = 20)
+	private String flightNumber;
+
+	@NotBlank
+	@Size(max = 20)
+	private String operatingAirlines;
+
+	@NotBlank
+	@Size(max = 20)
+	private String departureCity;
+
+	@NotBlank
+	@Size(max = 20)
+	private String arrivalCity;
+
+	/** JSON format: "yyyy-MM-dd" */
+	@NotNull
+	private LocalDate dateOfDeparture;
+
+	/** JSON format: "yyyy-MM-ddTHH:mm:ss" */
+	private LocalDateTime estimatedDepartureTime;
 
 	public String getFlightNumber() {
 		return flightNumber;
@@ -44,31 +62,31 @@ public class Flight extends AbstractEntity{
 		return arrivalCity;
 	}
 
-	@Override
-	public String toString() {
-		return "Flight [flightNumber=" + flightNumber + ", operatingAirlines=" + operatingAirlines + ", departureCity="
-				+ departureCity + ", arrivalCity=" + arrivalCity + ", dateOfDeparture=" + dateOfDeparture
-				+ ", estimatedDepartureTime=" + estimatedDepartureTime + "]";
-	}
-
 	public void setArrivalCity(String arrivalCity) {
 		this.arrivalCity = arrivalCity;
 	}
 
-	public Date getDateOfDeparture() {
+	public LocalDate getDateOfDeparture() {
 		return dateOfDeparture;
 	}
 
-	public void setDateOfDeparture(Date dateOfDeparture) {
+	public void setDateOfDeparture(LocalDate dateOfDeparture) {
 		this.dateOfDeparture = dateOfDeparture;
 	}
 
-	public Timestamp getEstimatedDepartureTime() {
+	public LocalDateTime getEstimatedDepartureTime() {
 		return estimatedDepartureTime;
 	}
 
-	public void setEstimatedDepartureTime(Timestamp estimatedDepartureTime) {
+	public void setEstimatedDepartureTime(LocalDateTime estimatedDepartureTime) {
 		this.estimatedDepartureTime = estimatedDepartureTime;
+	}
+
+	@Override
+	public String toString() {
+		return "Flight [id=" + getId() + ", flightNumber=" + flightNumber + ", operatingAirlines=" + operatingAirlines
+				+ ", departureCity=" + departureCity + ", arrivalCity=" + arrivalCity + ", dateOfDeparture="
+				+ dateOfDeparture + ", estimatedDepartureTime=" + estimatedDepartureTime + "]";
 	}
 
 }

@@ -23,3 +23,17 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+### macOS ###
+.DS_Store
+
+### Secrets & local config (never commit) ###
+application-local.properties
+.env
+*.env
+*.pem
+*.key
+*.ppk
+
+### Logs & scratch files ###
+*.log
+booking.json
