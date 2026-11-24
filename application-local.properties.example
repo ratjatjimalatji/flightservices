@@ -1,0 +1,10 @@
+# Copy this file to "application-local.properties" (same folder you run the app
+# from, e.g. next to flightservices.jar) and fill in your values.
+# application-local.properties is git-ignored - never commit real credentials.
+
+spring.datasource.username=flightapp
+spring.datasource.password=your-db-password
+
+# Optional overrides
+#spring.datasource.url=jdbc:mysql://localhost:3306/reservation
+#server.port=8080
