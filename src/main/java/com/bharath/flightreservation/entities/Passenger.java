@@ -1,17 +1,30 @@
 package com.bharath.flightreservation.entities;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
-public class Passenger extends AbstractEntity{
-	
+public class Passenger extends AbstractEntity {
+
+	@NotBlank
+	@Size(max = 256)
 	private String firstName;
+
+	@NotBlank
+	@Size(max = 256)
 	private String lastName;
+
+	@Size(max = 256)
 	private String middleName;
+
+	@Email
+	@Size(max = 50)
 	private String email;
+
+	@Size(max = 10)
 	private String phone;
-
-
 
 	public String getFirstName() {
 		return firstName;
@@ -51,6 +64,11 @@ public class Passenger extends AbstractEntity{
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "Passenger [id=" + getId() + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
 }
