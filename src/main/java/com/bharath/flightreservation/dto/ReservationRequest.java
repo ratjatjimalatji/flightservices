@@ -1,10 +1,18 @@
 package com.bharath.flightreservation.dto;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class ReservationRequest {
 
+	@NotNull
 	private Long flightId;
+	@NotBlank
 	private String passengerFirstName;
+	@NotBlank
 	private String passengerLastName;
+	@Email
 	private String passengerEmail;
 	private String passengerPhone;
 	private String nameOnTheCard;
@@ -85,12 +93,11 @@ public class ReservationRequest {
 		this.securityCode = securityCode;
 	}
 
+	// Card details are deliberately excluded so they never end up in logs.
 	@Override
 	public String toString() {
 		return "ReservationRequest [flightId=" + flightId + ", passengerFirstName=" + passengerFirstName
-				+ ", passengerLastName=" + passengerLastName + ", passengerEmail=" + passengerEmail
-				+ ", passengerPhone=" + passengerPhone + ", nameOnTheCard=" + nameOnTheCard + ", cardNumber="
-				+ cardNumber + ", expirationDate=" + expirationDate + ", securityCode=" + securityCode + "]";
+				+ ", passengerLastName=" + passengerLastName + "]";
 	}
 
 }

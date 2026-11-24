@@ -1,4 +1,4 @@
-CREATE DATABASE reservation;
+CREATE DATABASE IF NOT EXISTS reservation;
 USE reservation;
 
 CREATE TABLE flight
@@ -34,7 +34,7 @@ CREATE TABLE reservation
   CREATED TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (ID),
   FOREIGN KEY (PASSENGER_ID) REFERENCES passenger(ID) ON DELETE CASCADE,
-  FOREIGN KEY (FLIGHT_ID) REFERENCES reservation(ID)
+  FOREIGN KEY (FLIGHT_ID) REFERENCES flight(ID)
 );
 
 
@@ -67,3 +67,21 @@ insert into flight values(9,'SW3','South West','NYC',
 
 insert into flight values(10,'UA1','United Airlines','NYC',
 'DAL',STR_TO_DATE('02-06-2018', '%m-%d-%Y'),'2018-02-06 10:14:07');
+
+
+insert into passenger (ID, FIRST_NAME, LAST_NAME, MIDDLE_NAME, EMAIL, PHONE) values
+(1, 'John',    'Smith',    'Michael', 'john.smith@example.com',    '5125550101'),
+(2, 'Emily',   'Johnson',  NULL,      'emily.johnson@example.com', '5125550102'),
+(3, 'Carlos',  'Rivera',   'Antonio', 'carlos.rivera@example.com', '2125550103'),
+(4, 'Aisha',   'Khan',     NULL,      'aisha.khan@example.com',    '2125550104'),
+(5, 'Thabo',   'Nkosi',    'Sipho',   'thabo.nkosi@example.com',   '2145550105'),
+(6, 'Sarah',   'Williams', 'Jane',    'sarah.w@example.com',       '2145550106');
+
+
+insert into reservation (ID, CHECKED_IN, NUMBER_OF_BAGS, PASSENGER_ID, FLIGHT_ID) values
+(1, 1, 2, 1, 1),
+(2, 0, 0, 2, 1),
+(3, 1, 1, 3, 4),
+(4, 0, 0, 4, 5),
+(5, 1, 3, 5, 8),
+(6, 0, 1, 6, 10);
